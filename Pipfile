@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pypdf2 = "*"
+pandas = "*"
+sklearn = "*"
+numpy = "*"
+nltk = "*"
+matplotlib = "*"
+seaborn = "*"
+scikit-learn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
