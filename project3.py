@@ -48,6 +48,11 @@ def main():
    for page in pdfReader.pages:
       text += page.extract_text() + "\n"
 
+   df = pd.DataFrame()
+   df['city'] = str(doc)
+   df['raw_text'] = text
+
+
    # Tokenize words
    tokens = word_tokenize(text)
 
@@ -82,16 +87,23 @@ def main():
          supe_clean_string += word
          supe_clean_string += ' '
 
-   #print(supe_clean[0:10])
+
+   #df['clean_text'] = supe_clean_string
 
 
    vec = pickle.load(open('vec.pickle', 'rb'))
    km = pickle.load(open('kmeans.pickle', 'rb'))
 
-   X = vec.transform(supe_clean)
-   preds = km.fit_predict(X.toarray())
+   l = [supe_clean_string]
+   X = vec.transform(l)
+   preds = km.predict(X.toarray())
 
-   print(preds)
+   df['clean_text'] = l
+   df['clusterid'] = preds
+   df.to_csv('smartcity_predict.tsv', sep='\t')
+
+
+
 
 
 
