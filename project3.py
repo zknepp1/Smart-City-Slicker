@@ -48,9 +48,11 @@ def main():
    for page in pdfReader.pages:
       text += page.extract_text() + "\n"
 
+   city = str(doc)
+   print(city)
    df = pd.DataFrame()
-   df['city'] = str(doc)
-   df['raw_text'] = text
+   df['city'] = city
+   df['raw_text'] = [text]
 
 
    # Tokenize words
