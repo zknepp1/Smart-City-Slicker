@@ -48,8 +48,7 @@ def main():
    for page in pdfReader.pages:
       text += page.extract_text() + "\n"
 
-   city = ''
-   city += str(doc)
+   city = ''.join(args.document)
    print(city)
    df = pd.DataFrame()
    df['city'] = city
